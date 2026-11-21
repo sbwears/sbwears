@@ -48,6 +48,11 @@ function Checkout() {
   const navigate = useNavigate();
 
   const getCart = async () => {
+    if (!userId || !localStorage.getItem("userToken")) {
+      setError("Please log in to check out.");
+      setLoading(false);
+      return;
+    }
     try {
       setLoading(true);
       const res = await axios.get(`/api/users/user/${userId}`);

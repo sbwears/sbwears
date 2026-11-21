@@ -325,6 +325,10 @@ const Cart = ({ onCartUpdate }) => {
   const userId = localStorage.getItem("userId");
 
   const getCart = async () => {
+    if (!userId || !localStorage.getItem("userToken")) {
+      setLoading(false); // not logged in: empty cart, no request
+      return;
+    }
     try {
       const res = await axios.get(`/api/users/user/${userId}`);
       setUser(res.data);

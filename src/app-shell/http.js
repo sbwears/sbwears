@@ -37,7 +37,10 @@ export function installHttpAuth() {
       const status = error?.response?.status;
       const url = String(error?.config?.url ?? "");
       const sameOrigin = url.startsWith("/") || url.startsWith(window.location.origin);
-      if (status === 401 && sameOrigin) {
+      // A saved login whose account no longer exists (e.g. after switching databases)
+      // is as stale as an expired one.
+      const staleAccount = status === 404 && /\/api\/users\/user\/[^/]+$/.test(url);
+      if ((status === 401 || staleAccount) && sameOrigin) {
         try {
           if (isAdminScreen()) {
             window.localStorage.removeItem("adminToken");

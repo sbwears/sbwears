@@ -83,10 +83,8 @@ const Home = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const userId = localStorage.getItem("userId"); 
-        if (!userId) {
-          throw new Error("User ID not found"); 
-        }
+        const userId = localStorage.getItem("userId");
+        if (!userId || !localStorage.getItem("userToken")) return; // not logged in
         const response = await axios.get(
           `/api/users/user/${userId}`
         );

@@ -101,7 +101,7 @@ const Footer = () => {
               <img
                 src="https://cdn.shopify.com/s/files/1/0341/4805/7228/files/2desktop_new_website_copy_1_1.png?v=1726825752"
                 alt="placeholder icon"
-                class="h-5 w-8 mr-2"
+                className="h-5 w-8 mr-2"
               />
             </form>
 

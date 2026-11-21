@@ -53,7 +53,7 @@ export default function ShopByOccasions() {
       <div className="container px-4 py-5 mx-auto">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
           {category.map((occasion) => (
-            <div key={occasion.id} className="mb-6 m-5 ">
+            <div key={occasion._id} className="mb-6 m-5 ">
               <div className="h-[90%] w-[100%] overflow-hidden">
                 <img
                   src={`/image/${occasion.image}`}
